@@ -1,0 +1,25 @@
+# Event type with creator relationship
+type Event @node {
+  id: ID!                     # Unique ID for the event
+  title: String!              # Title of the event
+  description: String         # Optional description
+  date: String!               # Date of the event
+  location: String!           # Location of the event
+  meetupType: MeetupType!     # Enum: ONLINE or OFFLINE
+  createdBy: User!            # Many-to-one: Link to the user who created the event
+}
+
+# Enum for specifying meetup type
+enum MeetupType {
+  ONLINE                      # Online event
+  OFFLINE                     # Offline event
+}
+
+# Input for creating or updating an event
+input EventInput {
+  title: String!
+  description: String
+  date: String!
+  location: String!
+  meetupType: MeetupType!
+}

@@ -1,0 +1,33 @@
+# User type for login, registration, and event ownership
+type User @node {
+  id: ID!                     # Unique ID for the user
+  username: String!           # Username of the user
+  email: String!              # Email address for the user
+  events: [Event!]!           # One-to-many: User can create multiple events
+}
+
+# Input for filtering Users
+input UserWhere {
+  username: String
+  email: String
+}
+
+# Input for sorting Users
+input UserSort {
+  username: SortDirection
+  email: SortDirection
+}
+
+# Input for user registration
+input UserInput {
+  username: String!           # Username for registration
+  email: String!              # Email for registration
+  password: String!           # Password for registration
+  repeatPassword: String!
+}
+
+# Input for user login
+input UserLogin {
+  email: String!              # Email for login
+  password: String!           # Password for login
+}

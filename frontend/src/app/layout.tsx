@@ -9,7 +9,7 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body>
+            <body className="test">
                 <Header />
                 <main>{children}</main> {/* Сюда будут рендериться страницы */}
                 <Footer />

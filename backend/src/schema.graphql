@@ -44,11 +44,17 @@ input EventInput {
   meetupType: MeetupType!
 }
 
-# Input for user registration or login
+# Input for user registration
 input UserInput {
   username: String!           # Username for registration
   email: String!              # Email for registration
   password: String!           # Password for registration
+  repeatPassword: String!
+}
+
+input UserLogin {           
+  email: String!              # Email for login
+  password: String!           # Password for login
 }
 
 # Queries to fetch data

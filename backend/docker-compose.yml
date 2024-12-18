@@ -1,0 +1,33 @@
+services:
+  # Express.js API service
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: graphql_api
+    ports:
+      - "${API_PORT}:${API_PORT}" # API Port from .env
+    environment:
+      - NEO4J_URI=${NEO4J_URI}
+      - NEO4J_USERNAME=${NEO4J_USERNAME}
+      - NEO4J_PASSWORD=${NEO4J_PASSWORD}
+    depends_on:
+      - neo4j
+
+  # Neo4j service
+  neo4j:
+    image: neo4j:5
+    container_name: neo4j_db
+    ports:
+      - "${NEO4J_BROWSER_PORT}:${NEO4J_BROWSER_PORT}" # Neo4j Browser Port
+      - "${NEO4J_BOLT_PORT}:${NEO4J_BOLT_PORT}"       # Neo4j Bolt Port
+    environment:
+      - NEO4J_AUTH=${NEO4J_USERNAME}/${NEO4J_PASSWORD}
+    volumes:
+      - neo4j_data:/data
+      - neo4j_logs:/logs
+
+volumes:
+  neo4j_data:
+  neo4j_logs:
+  

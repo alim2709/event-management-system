@@ -1,0 +1,93 @@
+# User type for login, registration, and event ownership
+type User @node {
+  id: ID!                     # Unique ID for the user
+  username: String!           # Username of the user
+  email: String!              # Email address for the user
+  events: [Event!]!           # One-to-many: User can create multiple events
+}
+
+# Input for filtering Users
+input UserWhere {
+  username: String
+  email: String
+}
+
+# Input for sorting Users
+input UserSort {
+  username: SortDirection
+  email: SortDirection
+}
+
+# Event type with creator relationship
+type Event @node {
+  id: ID!                     # Unique ID for the event
+  title: String!              # Title of the event
+  description: String         # Optional description
+  date: String!               # Date of the event
+  location: String!           # Location of the event
+  meetupType: MeetupType!     # Enum: ONLINE or OFFLINE
+  createdBy: User!            # Many-to-one: Link to the user who created the event
+}
+
+# Enum for specifying meetup type
+enum MeetupType {
+  ONLINE                      # Online event
+  OFFLINE                     # Offline event
+}
+
+# Input for creating or updating an event
+input EventInput {
+  title: String!
+  description: String
+  date: String!
+  location: String!
+  meetupType: MeetupType!
+}
+
+# Input for user registration or login
+input UserInput {
+  username: String!           # Username for registration
+  email: String!              # Email for registration
+  password: String!           # Password for registration
+}
+
+# Queries to fetch data
+type Query {
+
+  users(
+    where: UserWhere            # Filter users based on fields
+    limit: Int                  # Limit the number of results
+    offset: Int                 # Skip the first N results
+    sort: [UserSort!]           # Sort the results
+  ): [User!]!
+
+  # Fetch general information for the main page
+  generalInformation: String!
+
+  # Fetch all events with optional filters
+  events(filter: String): [Event!]!
+
+  # Fetch a detailed view of a single event
+  eventById(id: ID!): Event
+
+  # Fetch all events created by a user
+  myEvents(userId: ID!): [Event!]!
+}
+
+# Mutations to handle data changes
+type Mutation {
+  # Register a new user
+  registerUser(input: UserInput!): User!
+
+  # Log in a user (returns a token)
+  loginUser(email: String!, password: String!): String!
+
+  # Create a new event
+  createEvent(input: EventInput!, userId: ID!): Event!
+
+  # Delete an event
+  deleteEvent(eventId: ID!): String!
+
+  # Update an existing event
+  updateEvent(eventId: ID!, input: EventInput!): Event!
+}

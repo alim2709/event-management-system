@@ -1,6 +1,8 @@
+import styles from "./login.module.scss";
+
 export default function LoginPage() {
     return (
-        <div>
+        <div className={styles.test}>
             <h1>Login</h1>
             <form>
                 <label>Username:</label>

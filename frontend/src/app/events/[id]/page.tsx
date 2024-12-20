@@ -1,3 +1,5 @@
+import styles from "./event.module.scss";
+
 export default function EventDetailPage() {
     return (
         <div>

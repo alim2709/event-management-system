@@ -1,0 +1,27 @@
+@import "@/app/globals.scss";
+
+.events-page {
+    background-color: $light-color;
+    padding-top: 1px;
+    padding-bottom: 70px;
+
+    .events-page__container {
+        margin-left: 5%;
+        margin-right: 5%;
+        max-width: 90%;
+
+        .events-page__title {
+            color: black;
+            font-size: 70px;
+            text-align: center;
+        }
+
+        .events-page__cards {
+            display: flex;
+            flex-wrap: wrap;
+            row-gap: 60px;
+            column-gap: 90px;
+            justify-content: center;
+        }
+    }
+}

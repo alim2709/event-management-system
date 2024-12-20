@@ -1,0 +1,102 @@
+@import "@/app/globals.scss";
+
+.event-card {
+    border: 4px solid $orange-color;
+    border-radius: 20px;
+    flex: 1 1 calc(50% - 10px);
+    max-width: 550px;
+    box-sizing: border-box;
+    background-color: black;
+
+    font-weight: 700;
+    font-style: normal;
+    color: $orange-color;
+    font-size: 20px;
+
+    &__image-wrapper {
+        position: relative;
+        width: 100%;
+        height: 300px;
+        overflow: hidden;
+        border-bottom: 4px solid $orange-color;
+        border-radius: 15px;
+    }
+
+    &__image {
+        object-fit: cover;
+    }
+
+    .event-card__content {
+        padding: 0 20px;
+
+        .event-card__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 30px;
+            letter-spacing: -1px;
+        }
+
+        .event-card__footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 100;
+
+            .event-card__link {
+                color: $orange-color;
+                cursor: pointer;
+                transition: 0.5s;
+
+                &:hover {
+                    color: rgb(228, 226, 221);
+                }
+            }
+        }
+    }
+
+    @media (max-width: 700px) {
+        flex: 1 1 100%;
+        max-width: 100%;
+        border-radius: 15px;
+
+        &__image-wrapper {
+            height: 200px;
+        }
+
+        .event-card__content {
+            padding: 10px;
+
+            .event-card__header {
+                font-size: 20px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .event-card__footer {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+
+                .event-card__link {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 500px) {
+        .event-card__content {
+            .event-card__header {
+                font-size: 18px;
+                letter-spacing: 0;
+            }
+
+            .event-card__footer {
+                .event-card__link {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}

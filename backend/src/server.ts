@@ -16,7 +16,14 @@ async function startServer() {
     const server = new ApolloServer({ schema });
     await server.start();
 
-    app.use('/graphql', bodyParser.json(), expressMiddleware(server));
+    app.use('/graphql', bodyParser.json(), expressMiddleware(
+      server,
+      {
+        context: async () => {
+          return { driver: Neo4jDriver };
+        },
+      }
+    ));
 
     const PORT = process.env.PORT || 4000;
     app.listen(PORT, () => {

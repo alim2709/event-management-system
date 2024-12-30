@@ -5,3 +5,18 @@ type User @node {
   email: String!  @unique
   events: [Event!]! @relationship(type: "CREATED", direction: OUT)           
 }
+
+input SignUpInput {
+    email: String!
+    password: String!
+}
+
+type SignUpResponse {
+    success: Boolean!
+    message: String!
+    user: User
+}
+
+type Mutation {
+    signUp(input: SignUpInput!): SignUpResponse!
+}

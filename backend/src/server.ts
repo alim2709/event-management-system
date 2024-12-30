@@ -4,7 +4,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import { Neo4jGraphQL } from '@neo4j/graphql';
 import typeDefs from './schemas';
-import resolvers from './resolvers';
+import {resolvers} from './resolvers';
 import { Neo4jDriver } from './config/neo4j.config';
 
 async function startServer() {

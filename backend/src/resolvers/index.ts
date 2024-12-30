@@ -1,7 +1,45 @@
-const resolvers = {
+import { getPasswordHash } from "../../utils/authentication"
+
+export const resolvers = {
     Query: {},
     
     Mutation: {
+      signUp: async (_, { input}, context) => {
+          const {email, password} = input;
+          const session = context.driver.session();
+          const hash = await getPasswordHash(password);
+          try {
+            const createUser = await session.run(
+              `
+              CREATE (u:User {email: $email, password: $password})
+              RETURN u
+              `,
+              { email, password: hash } // Pass parameters to prevent Cypher injection
+            );
+
+            // Extract the created user node
+            const user = createUser.records[0].get('u').properties;
+
+            return {
+              success: true,
+              message: 'User created successfully',
+              user,
+            };
+          }catch (err) {
+            console.error('Error creating user:', err);
+      
+            // Close the session in case of error
+      
+            return {
+              success: false,
+              message: 'Error creating user',
+            };
+          } finally {
+            // Ensure the session is closed even if there's an error
+            await session.close();
+          }
+      },
+      
       createEvents: async (_, { input }, context) => {
         console.log(input)
         const session = context.driver.session();
@@ -59,6 +97,4 @@ const resolvers = {
       },
     },
   };
-  
-  export default resolvers;
   

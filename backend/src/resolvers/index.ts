@@ -9,6 +9,22 @@ export const resolvers = {
           const session = context.driver.session();
           const hash = await getPasswordHash(password);
           try {
+            const existingUser = await session.run(
+              `
+              MATCH (u:User {email: $email})
+              RETURN u
+              `,
+              { email }
+            );
+  
+            if (existingUser.records.length > 0) {
+                // User already exists
+                return {
+                    success: false,
+                    message: 'A user with this email already exists.',
+                };
+            }
+
             const createUser = await session.run(
               `
               CREATE (u:User {email: $email, password: $password})

@@ -27,10 +27,10 @@ export const resolvers = {
 
             const createUser = await session.run(
               `
-              CREATE (u:User {email: $email, password: $password})
+              CREATE (u:User {id: randomUUID(), email: $email, hashedPassword: $hashedPassword})
               RETURN u
               `,
-              { email, password: hash } // Pass parameters to prevent Cypher injection
+              { email, hashedPassword: hash } // Pass parameters to prevent Cypher injection
             );
 
             // Extract the created user node

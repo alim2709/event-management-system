@@ -4,7 +4,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import { Neo4jGraphQL } from '@neo4j/graphql';
 import typeDefs from './schemas';
-import resolvers from './resolvers';
+import {resolvers} from './resolvers';
 import { Neo4jDriver } from './config/neo4j.config';
 
 async function startServer() {
@@ -16,9 +16,16 @@ async function startServer() {
     const server = new ApolloServer({ schema });
     await server.start();
 
-    app.use('/graphql', bodyParser.json(), expressMiddleware(server));
+    app.use('/graphql', bodyParser.json(), expressMiddleware(
+      server,
+      {
+        context: async () => {
+          return { driver: Neo4jDriver };
+        },
+      }
+    ));
 
-    const PORT = process.env.PORT || 4000;
+    const PORT = process.env.API_PORT || 4000;
     app.listen(PORT, () => {
       console.log(`Server is running on http://localhost:${PORT}/graphql`);
     });

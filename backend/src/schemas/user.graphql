@@ -1,7 +1,7 @@
 type User @node {
-  id: ID! @id                     
+  id: ID! @id            
   username: String! @unique
-  hashedPassword: String!          
+  hashedPassword: String! @private        
   email: String!  @unique
   events: [Event!]! @relationship(type: "CREATED", direction: OUT)           
 }

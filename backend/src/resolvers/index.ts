@@ -1,4 +1,4 @@
-import { getPasswordHash } from "../../utils/authentication"
+import { getPasswordHash, verifyPassword, createAccessToken } from "../../utils/authentication";
 
 export const resolvers = {
     Query: {},
@@ -55,7 +55,60 @@ export const resolvers = {
             await session.close();
           }
       },
-      
+
+      login: async (_, { input}, context) => {
+        const { email, password} = input;
+
+        const session = context.driver.session();
+
+        try {
+          // Check if user exists by email
+          const result = await session.run(
+              `MATCH (u:User {email: $email}) RETURN u`,
+              { email }
+          );
+  
+          if (result.records.length === 0) {
+              throw new Error("User does not exist with the provided email.");
+          }
+  
+          const userNode = result.records[0].get("u").properties;
+
+          const isPasswordValid =  verifyPassword(password, userNode.password);
+          if (isPasswordValid) {
+            const accessToken = createAccessToken(
+              {
+                "id": String(userNode.id),
+                "email": userNode.email,
+                "username": userNode.username
+              }
+            )
+
+            const refreshToken = createAccessToken(
+              {
+                "id": String(userNode.id),
+                "email": userNode.email,
+                "username": userNode.username
+              },
+              Math.floor(Number(process.env.REFRESH_TOKEN_EXPIRE_DAYS) * 24 * 60 * 60),
+              true 
+            );
+
+            return {
+              success: true,
+              message: "You now are logged in",
+              accessToken: accessToken,
+              refreshToken: refreshToken
+            }
+        }
+        
+      } catch (err) {
+        throw new Error(err)
+      } finally{
+        session.close();
+      }
+    },
+
       createEvents: async (_, { input }, context) => {
         console.log(input)
         const session = context.driver.session();

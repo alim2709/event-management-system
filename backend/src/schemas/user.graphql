@@ -11,6 +11,18 @@ input SignUpInput {
     password: String!
 }
 
+input LoginInput {
+    email: String!
+    password: String!
+}
+
+type LoginResponse {
+    success: Boolean!
+    message: String!
+    accessToken: String!
+    refreshToken: String!
+}
+
 type SignUpResponse {
     success: Boolean!
     message: String!
@@ -18,5 +30,6 @@ type SignUpResponse {
 }
 
 type Mutation {
-    signUp(input: SignUpInput!): SignUpResponse!
+    signUp(input: SignUpInput!): SignUpResponse!,
+    login(input: LoginInput!): LoginResponse!
 }

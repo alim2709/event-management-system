@@ -42,5 +42,10 @@ export const createAccessToken = (userData: UserData, expire?: number, refresh: 
 }
 
 export const verifyToken = (token: string) => {
-
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+        return decoded;
+      } catch (err) {
+        throw new Error(err);
+      } 
 }

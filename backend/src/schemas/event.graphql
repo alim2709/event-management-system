@@ -21,9 +21,5 @@ input EventCreateInput {
   location: String!
   description: String
   date: String!
-  createdBy: EventCreatedByFieldInput
 }
 
-input EventCreatedByFieldInput {
-  id: ID
-}

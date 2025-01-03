@@ -21,7 +21,6 @@ async function startServer() {
       server,
       {
         context: async ({req}: ExpressContextFunctionArgument) => {
-          console.log('Authorization header:', req.headers.authorization);
           return { 
             driver: Neo4jDriver,
             req

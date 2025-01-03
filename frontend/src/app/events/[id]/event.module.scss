@@ -1,1 +1,46 @@
 @import "@/app/globals.scss";
+
+.event-details {
+    background-color: $light-color;
+    text-transform: uppercase;
+    padding-top: 20px;
+
+    .event-details__container {
+        margin-left: 10%;
+        margin-right: 10%;
+        max-width: 80%;
+        font-size: 30px;
+
+        .event-details__title {
+            font-size: 48px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .event-details__date {
+            span {
+                font-weight: bold;
+            }
+        }
+        .event-details__location {
+            span {
+                font-weight: bold;
+            }
+        }
+
+        .event-details__links {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+
+            a {
+                color: $orange-color;
+                font-weight: bold;
+                transition: 0.4s;
+
+                &:hover {
+                    color: black;
+                }
+            }
+        }
+    }
+}

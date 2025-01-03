@@ -29,11 +29,35 @@ export default function EventDetailPage() {
     }
 
     return (
-        <div className={styles["event-details"]}>
-            <h1>{event.title}</h1>
-            <p>Date:{event.date}</p>
-            <p>Location: {event.location}</p>
-            <p>{event.description}</p>
-        </div>
+        <section className={styles["event-details"]}>
+            <div className={styles["event-details__container"]}>
+                <h1 className={styles["event-details__title"]}>
+                    {event.title}
+                </h1>
+                <p className={styles["event-details__date"]}>
+                    <span>Date:</span> {event.date}
+                </p>
+                <p className={styles["event-details__location"]}>
+                    <span> Location: </span> {event.location}
+                </p>
+                <p className={styles["event-details__description"]}>
+                    {event.description}
+                </p>
+                <div className={styles["event-details__links"]}>
+                    <a
+                        className={`${styles["event-details__link"]} ${styles["event-details__link--website"]}`}
+                        href="#"
+                    >
+                        {event.title} Website
+                    </a>
+                    <a
+                        className={`${styles["event-details__link"]} ${styles["event-details__link--other-events"]}`}
+                        href="/events"
+                    >
+                        Other events
+                    </a>
+                </div>
+            </div>
+        </section>
     );
 }

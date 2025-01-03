@@ -2,7 +2,7 @@ import styles from "./EventCard.module.scss";
 import Image from "next/image";
 import image from "../../../public/images/attendees-at-concert-event.jpg";
 
-export default function EventCard() {
+export default function EventCard({ eventId }: { eventId: string }) {
     return (
         <div className={styles["event-card"]}>
             <div className={styles["event-card__image-wrapper"]}>
@@ -23,7 +23,10 @@ export default function EventCard() {
                     <p className={styles["event-card__location"]}>
                         Nürburgring, Germany
                     </p>
-                    <a className={styles["event-card__link"]} href="#">
+                    <a
+                        className={styles["event-card__link"]}
+                        href={`/events/${eventId}`}
+                    >
                         Learn more
                     </a>
                 </div>

@@ -1,6 +1,6 @@
 # Event type with creator relationship
 type Event @node {
-  id: ID! @id                   # Unique ID for the event
+  id: ID! @id                 # Unique ID for the event
   title: String!              # Title of the event
   description: String         # Optional description
   date: String!               # Date of the event

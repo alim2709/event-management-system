@@ -40,3 +40,7 @@ export const createAccessToken = (userData: UserData, expire?: number, refresh: 
     return token;
 
 }
+
+export const verifyToken = (token: string) => {
+
+}

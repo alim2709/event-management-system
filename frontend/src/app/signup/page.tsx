@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import styles from "./signup.module.scss";
 
@@ -12,6 +13,7 @@ export default function SignUpPage() {
 
     const [message, setMessage] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
+    const router = useRouter();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -71,12 +73,10 @@ export default function SignUpPage() {
             }
 
             if (data?.signUp?.success) {
-                setMessage("Registration successful! You can now log in.");
-                setFormData({
-                    email: "",
-                    password: "",
-                    confirmPassword: "",
-                });
+                setMessage("Registration successful! Redirecting to login...");
+                setTimeout(() => {
+                    router.push("/login");
+                }, 1000);
             } else {
                 setMessage(
                     data?.signUp?.message ||

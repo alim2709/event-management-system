@@ -1,11 +1,11 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import styles from "./signup.module.scss";
 
 export default function SignUpPage() {
     const [formData, setFormData] = useState({
-        username: "",
         email: "",
         password: "",
         confirmPassword: "",
@@ -13,6 +13,7 @@ export default function SignUpPage() {
 
     const [message, setMessage] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
+    const router = useRouter();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -43,15 +44,14 @@ export default function SignUpPage() {
                                 success
                                 message
                                 user {
-                                    email
                                     id
+                                    email
                                 }
                             }
                         }
                     `,
                     variables: {
                         input: {
-                            username: formData.username,
                             email: formData.email,
                             password: formData.password,
                         },
@@ -62,21 +62,29 @@ export default function SignUpPage() {
             const { data, errors } = await response.json();
 
             if (errors) {
-                setMessage("Registration failed. Please try again.");
-                console.error(errors);
-            } else if (data.signUp.success) {
-                setMessage("Registration successful! You can now log in.");
-                setFormData({
-                    username: "",
-                    email: "",
-                    password: "",
-                    confirmPassword: "",
-                });
+                console.error(
+                    "GraphQL Errors:",
+                    JSON.stringify(errors, null, 2)
+                );
+                setMessage(
+                    "Registration failed. Please check your input or try again."
+                );
+                return;
+            }
+
+            if (data?.signUp?.success) {
+                setMessage("Registration successful! Redirecting to login...");
+                setTimeout(() => {
+                    router.push("/login");
+                }, 1000);
             } else {
-                setMessage(data.signUp.message);
+                setMessage(
+                    data?.signUp?.message ||
+                        "Registration failed. Please try again."
+                );
             }
         } catch (error) {
-            console.error("Error during registration:", error);
+            console.error("Network or server error:", error);
             setMessage("An error occurred. Please try again later.");
         } finally {
             setLoading(false);
@@ -90,19 +98,6 @@ export default function SignUpPage() {
                     className={styles["signup-page__form"]}
                     onSubmit={handleSubmit}
                 >
-                    <label className={styles["signup-page__label"]}>
-                        Username
-                    </label>
-                    <input
-                        type="text"
-                        name="username"
-                        placeholder="Enter username"
-                        value={formData.username}
-                        onChange={handleChange}
-                        className={`${styles["signup-page__input"]} ${styles["signup-page__input--username"]}`}
-                        required
-                    />
-
                     <label className={styles["signup-page__label"]}>
                         Email
                     </label>

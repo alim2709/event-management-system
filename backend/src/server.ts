@@ -1,11 +1,12 @@
 import { ApolloServer } from '@apollo/server';
-import { expressMiddleware } from '@apollo/server/express4';
+import { expressMiddleware, ExpressContextFunctionArgument } from '@apollo/server/express4';
 import express from 'express';
 import bodyParser from 'body-parser';
 import { Neo4jGraphQL } from '@neo4j/graphql';
 import typeDefs from './schemas';
 import {resolvers} from './resolvers';
 import { Neo4jDriver } from './config/neo4j.config';
+
 
 async function startServer() {
   try {
@@ -19,8 +20,11 @@ async function startServer() {
     app.use('/graphql', bodyParser.json(), expressMiddleware(
       server,
       {
-        context: async () => {
-          return { driver: Neo4jDriver };
+        context: async ({req}: ExpressContextFunctionArgument) => {
+          return { 
+            driver: Neo4jDriver,
+            req
+          };
         },
       }
     ));

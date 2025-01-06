@@ -1,4 +1,4 @@
-import { getPasswordHash, verifyPassword, createAccessToken } from "../../utils/authentication";
+import { getPasswordHash, verifyPassword, createAccessToken, verifyToken } from "../../utils/authentication";
 
 export const resolvers = {
     Query: {},
@@ -74,7 +74,7 @@ export const resolvers = {
   
           const userNode = result.records[0].get("u").properties;
 
-          const isPasswordValid =  verifyPassword(password, userNode.password);
+          const isPasswordValid =  verifyPassword(password, userNode.hashedPassword);
           if (isPasswordValid) {
             const accessToken = createAccessToken(
               {
@@ -110,28 +110,40 @@ export const resolvers = {
     },
 
       createEvents: async (_, { input }, context) => {
-        console.log(input)
+        
         const session = context.driver.session();
+
+        const authHeader = context.req.headers.authorization;
+        if (!authHeader) {
+          throw new Error('Authorization header missing');
+        }
+
+        const token = authHeader.split(' ')[1];
+
+        let decodedToken;
+
+        try {
+          decodedToken = verifyToken(token);
+        } catch (err) {
+          throw new Error(err);
+        }
+
+        const userId = decodedToken.user.id;
+
         try {
           const events = await Promise.all(
             input.map(async (eventInput) => {
-              const { title, description, date, location, meetupType, createdBy } = eventInput;
+              const { title, description, date, location, meetupType } = eventInput;
       
-              if (!createdBy?.id) {
-                throw new Error("'createdBy.id' is required to link the user to the event.");
-              }
-      
-              // Verify that the user exists
               const userCheckResult = await session.run(
                 `MATCH (u:User {id: $userId}) RETURN u`,
-                { userId: createdBy.id }
+                { userId }
               );
       
               if (!userCheckResult.records.length) {
-                throw new Error(`User with ID ${createdBy.id} does not exist.`);
+                throw new Error(`User with ID ${userId} does not exist.`);
               }
       
-              // Create event and link it to the user
               const eventResult = await session.run(
                 `
                 CREATE (e:Event {id: randomUUID(), title: $title, description: $description, date: $date, location: $location, meetupType: $meetupType})
@@ -146,16 +158,16 @@ export const resolvers = {
                   date,
                   location,
                   meetupType,
-                  userId: createdBy.id,
+                  userId,
                 }
               );
               // Extract the event with createdBy relationship
-            const event = eventResult.records[0].get("e");
-            console.log(event);
-            return {
-              ...event,
-              createdBy: event.createdBy, // Ensure createdBy is included
-            };
+              const event = eventResult.records[0].get("e");
+          
+              return {
+                ...event,
+                createdBy: event.createdBy, // Ensure createdBy is included
+              };
             })
           );
           

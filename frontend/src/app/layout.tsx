@@ -37,7 +37,7 @@ const fjallaOne = Fjalla_One({
 const oswald = Oswald({
     subsets: ["latin"],
     weight: ["200", "300", "400", "500", "600", "700"],
-    variable: "--font-fjalla-one",
+    variable: "--font-oswald",
 })
 
 export default function RootLayout({

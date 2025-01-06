@@ -1,45 +1,75 @@
+"use client";
+
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import styles from "./page.module.scss";
 import kolokolLogo from "../../public/images/kolokol-orange.png";
 import nico from "../../public/images/nico.png";
 import meeting from "../../public/images/corp-event-checklist.jpg";
 import crowd from "../../public/images/2-1.png";
-import card from "../../public/images/Midwest-Alarm-Services_Blog-Images_0001_Types-of-access-control.webp";
+import card from "../../public/images/Midwest-Alarm-Services_Blog-Images_0001_Types-of-access-control.png";
 import postman from "../../public/images/what-is-a-mailing-address.jpg";
 import festival from "../../public/images/festival-decibulles-2017-laurent-khram-longvixay-1-1600x900.jpg";
 import exhibition from "../../public/images/exhibition.jpg";
 import presentation from "../../public/images/getty_533991320_352162.jpg";
 import conference from "../../public/images/eventscom_cover.jpg";
-import training from "../../public/images/team-training.webp";
+import training from "../../public/images/team-training.jpg";
 import football from "../../public/images/istockphoto-469569148-612x612.jpg";
 import sign from "../../public/images/sign.png";
 import bigCrowd from "../../public/images/5-1.png";
 import tomorrowland from "../../public/images/Tomorrowland2016mainstage.jpg";
 
-
 export default function Home() {
+    const router = useRouter();
+
+    const handleLoginRedirect = () => {
+        router.push("/login");
+    };
+
+    const handleSignUpRedirect = () => {
+        router.push("/signup");
+    };
+
     return (
         <>
             <main className={styles.main}>
                 <section className={styles["main__title-section"]}>
-                    {/* лівий бік */}
+                    {/* Левый блок */}
                     <div className={styles["main__title-left"]}>
-                        {/* заголовок і логотип */}
+                        {/* Заголовок и логотип */}
                         <div className={styles["main__title-logo"]}>
                             <Image
                                 className={styles["main__logo"]}
                                 src={kolokolLogo}
                                 alt="logo of the company"
                             />
-                            <h1 className={styles["main__heading"]}>THE SOUND OF EVENTS</h1>
+                            <h1 className={styles["main__heading"]}>The sound of events</h1>
                         </div>
-                        {/* посилання на логін */}
+                        {/* Ссылки на логин и регистрацию */}
                         <div className={styles["main__auth-links"]}>
-                            <a className={styles["main__link"]} href="#">LOG IN</a>
-                            <a className={styles["main__link"]} href="#">SIGN UP</a>
+                            <a
+                                className={styles["main__link"]}
+                                href="#"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    handleLoginRedirect();
+                                }}
+                            >
+                                Log In
+                            </a>
+                            <a
+                                className={styles["main__link"]}
+                                href="#"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    handleSignUpRedirect();
+                                }}
+                            >
+                                Sign Up
+                            </a>
                         </div>
                     </div>
-                    {/* правий бік */}
+                    {/* Правый блок */}
                     <div className={styles["main__title-right"]}>
                         <Image
                             className={styles["main__image"]}
@@ -48,9 +78,9 @@ export default function Home() {
                         />
                     </div>
                 </section>
-                {/* друге полотно */}
+                {/* Второе полотно */}
                 <section className={styles["main__info-section"]}>
-                    {/* лівий бік */}
+                    {/* Левый блок */}
                     <div className={styles["main__info-left"]}>
                         <Image
                             className={styles["main__info-image"]}
@@ -58,87 +88,99 @@ export default function Home() {
                             alt="The crowd of people on the festival of colour"
                         />
                     </div>
-                    {/* правий бік */}
+                    {/* Правый блок */}
                     <div className={styles["main__info-right"]}>
-                        {/* заголовок і стрілка */}
                         <div className={styles["main__info-header"]}>
                             <Image
                                 className={styles["main__icon"]}
                                 src={sign}
                                 alt="A symbol image"
                             />
-                            <h2 className={styles["main__subheading"]}>WE SPECIALIZE IN CREATING SEAMLESS EVENT EXPERIENCES:</h2>
+                            <h2 className={styles["main__subheading"]}>We specialize in creating seamless event experiences:</h2>
                         </div>
-                        {/* список */}
                         <div className={styles["main__info-list"]}>
                             <ul className={styles["main__list"]}>
-                                <li className={styles["main__list-item"]}>Event creation and management</li>
-                                <li className={styles["main__list-item"]}>Filtering by date and category</li>
-                                <li className={styles["main__list-item"]}>Easy booking and reservation</li>
-                                <li className={styles["main__list-item"]}>Perfect for online and offline meetups</li>
-                                <li className={styles["main__list-item"]}>Hassle-free booking system</li>
+                                <li className={styles["main__list-item"]}>
+                                    Event creation and management
+                                </li>
+                                <li className={styles["main__list-item"]}>
+                                    Filtering by date and category
+                                </li>
+                                <li className={styles["main__list-item"]}>
+                                    Easy booking and reservation
+                                </li>
+                                <li className={styles["main__list-item"]}>
+                                    Perfect for online and offline meetups
+                                </li>
+                                <li className={styles["main__list-item"]}>
+                                    Hassle-free booking system
+                                </li>
                             </ul>
                         </div>
                     </div>
                 </section>
-                {/* секція з трьома картками */}
+                {/* Секция с карточками */}
                 <section className={styles["main__cards-section"]}>
-                    {/* заголовок */}
                     <div className={styles["main__cards-header"]}>
-                        <h2 className={styles["main__subheading"]}>PLANNING AN EVENT?</h2>
-                        <p className={styles["main__paragraph"]}>WE WILL ENSURE AN EFFICIENT PARTICIPANT PATH TO YOUR EVENT</p>
+                        <h2 className={styles["main__subheading"]}>Planning an event?</h2>
+                        <p className={styles["main__paragraph"]}>We will ensure an efficient participant path to your event</p>
                     </div>
-                    {/* картки */}
                     <div className={styles["main__cards"]}>
                         <div className={styles["main__card"]}>
-                            <div className={styles["main__card-image"]}>
+                            <div>
                                 <Image
+                                    className={styles["main__card-image"]}
                                     src={meeting}
                                     alt="People are sitting at the table with glasses of drink."
                                 />
                             </div>
                             <div className={styles["main__card-title"]}>
-                                <h3>Registration of participants</h3>
-                            </div>
-                            <div className={styles["main__card-text"]}>
-                                <p>We will integrate a registration form into the website, create personal accounts for different categories of participants</p>
+                                <h3 className={styles["main__card-heading"]}>Registration of participants</h3>
+                                <div className={styles["main__card-text"]}>
+                                    <p>We will integrate a registration form into the website, create personal accounts for different categories of participants</p>
+                                </div>
                             </div>
                         </div>
+                        {/* Остальные карточки */}
                         <div className={styles["main__card"]}>
-                            <div className={styles["main__card-image"]}>
-                                <Image 
+                            <div>
+                                <Image
+                                    className={styles["main__card-image"]} 
                                     src={card}
                                     alt="Someone is keeping card by the cardreader."
                                 />
                             </div>
                             <div className={styles["main__card-title"]}>
-                                <h3>Access control and visitor accounting</h3>
-                            </div>
-                            <div className={styles["main__card-text"]}>
-                                <p>We organize controlled access for participants and accounting for individual halls and zones</p>
+                                <h3 className={styles["main__card-heading"]}>Access control and visitor accounting</h3>
+                                <div className={styles["main__card-text"]}>
+                                    <p>We organize controlled access for participants and accounting for individual halls and zones</p>
+                                </div>
                             </div>
                         </div>
                         <div className={styles["main__card"]}>
-                            <div className={styles["main__card-image"]}>
-                                <Image 
+                            <div>
+                                <Image
+                                    className={styles["main__card-image"]} 
                                     src={postman}
                                     alt="A postman is putting envelops into the postbox."
                                 />
                             </div>
                             <div className={styles["main__card-title"]}>
-                                <h3>Mailings to participants</h3>
-                            </div>
-                            <div className={styles["main__card-text"]}>
-                                <p>We will set up and send personalized emails, tickets, reminders, notifications</p>
+                                <h3 className={styles["main__card-heading"]}>Mailing to participants</h3>
+                                <div className={styles["main__card-text"]}>
+                                    <p>We will set up and send personalized emails, tickets, reminders, notifications</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </section>
+                {/* Остальные секции */}
                 <section className={styles["main__event-types"]}>
-                    {/* заголовок */}
-                    <h2 className={styles["main__subheading"]}>We will help you choose events of any format</h2>
-                    {/* картки */}
+                    <h2 className={styles["main__subheading"]}>
+                        We will help you choose events of any format
+                    </h2>
                     <div className={styles["main__event-cards"]}>
+                        {/* Карточки с типами событий */}
                         <div className={styles["main__event-card"]}>
                             <Image
                                 className={styles["main__event-image"]}
@@ -199,13 +241,15 @@ export default function Home() {
                                 <p>Sporting Events</p>
                             </div>
                         </div>
+                        {/* Остальные карточки */}
                     </div>
                 </section>
                 {/* передостання секція */}
                 <section className={styles["main__benefits"]}>
                     {/* зображення */}
-                    <div className={styles["main__benefits-image"]}>
-                        <Image 
+                    <div>
+                        <Image
+                            className={styles["main__benefits-image"]} 
                             src={bigCrowd}
                             alt="A huge crowd of people is in front of the big stage during the music festival"
                         />

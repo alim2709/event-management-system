@@ -207,8 +207,9 @@ export default function Home() {
                 {/* передостання секція */}
                 <section className={styles["main__benefits"]}>
                     {/* зображення */}
-                    <div className={styles["main__benefits-image"]}>
-                        <Image 
+                    <div>
+                        <Image
+                            className={styles["main__benefits-image"]} 
                             src={bigCrowd}
                             alt="A huge crowd of people is in front of the big stage during the music festival"
                         />

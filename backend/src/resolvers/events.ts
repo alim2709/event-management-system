@@ -3,7 +3,7 @@ import { Context } from "@neo4j/graphql/dist/types";
 
 //Event resolvers
 
- const eventResolvers = {
+ export const eventResolvers = {
   Query: {
     //Fetch all Events
    events: async (_: any, args:any, context: Context) => {
@@ -86,5 +86,3 @@ deleteEvent: async (_:any, { id }: { id: string }, context: Context) => {
    },
   },
 };
-
-export default eventResolvers ;

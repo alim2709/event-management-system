@@ -191,6 +191,56 @@ export default function Home() {
                                 <p>Festivals</p>
                             </div>
                         </div>
+                        <div className={styles["main__event-card"]}>
+                            <Image
+                                className={styles["main__event-image"]}
+                                src={exhibition}
+                                alt="A photo of the people at the Art Gallery"
+                            />
+                            <div className={styles["main__event-title"]}>
+                                <p>Exhibitions</p>
+                            </div>
+                        </div>
+                        <div className={styles["main__event-card"]}>
+                            <Image 
+                                className={styles["main__event-image"]}
+                                src={presentation}
+                                alt="A photo of a man in front of other people"
+                            />
+                            <div className={styles["main__event-title"]}>
+                                <p>Presentations</p>
+                            </div>
+                        </div>
+                        <div className={styles["main__event-card"]}>
+                            <Image 
+                                className={styles["main__event-image"]}
+                                src={conference}
+                                alt="A photo of the man on the stage in front of a lot of people"
+                            />
+                            <div className={styles["main__event-title"]}>
+                                <p>Conferences</p>
+                            </div>
+                        </div>
+                        <div className={styles["main__event-card"]}>
+                            <Image
+                                className={styles["main__event-image"]}
+                                src={training}
+                                alt="A photo of a man in front of other people" 
+                            />
+                            <div className={styles["main__event-title"]}>
+                                <p>Trainings</p>
+                            </div>
+                        </div>
+                        <div className={styles["main__event-card"]}>
+                            <Image 
+                                className={styles["main__event-image"]}
+                                src={football}
+                                alt="A photo of fans, rising their hands, during football match"
+                            />
+                            <div className={styles["main__event-title"]}>
+                                <p>Sporting Events</p>
+                            </div>
+                        </div>
                         {/* Остальные карточки */}
                     </div>
                 </section>

@@ -1,5 +1,5 @@
 import { getPasswordHash, verifyPassword, createAccessToken, verifyToken } from "../../utils/authentication";
-import { eventResolvers } from './events';
+import  eventResolvers  from './events';
 
 export const resolvers = {
     Query: {

@@ -38,7 +38,7 @@ export default function EventDetailPage() {
                     <span>Date:</span> {event.date}
                 </p>
                 <p className={styles["event-details__location"]}>
-                    <span> Location: </span> {event.location}
+                    <span>Location:</span> {event.location}
                 </p>
                 <p className={styles["event-details__description"]}>
                     {event.description}

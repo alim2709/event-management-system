@@ -23,11 +23,11 @@ export default function Home() {
     const router = useRouter();
 
     const handleLoginRedirect = () => {
-        router.push("/login"); // Переход на страницу логина
+        router.push("/login");
     };
 
     const handleSignUpRedirect = () => {
-        router.push("/signup"); // Переход на страницу регистрации
+        router.push("/signup");
     };
 
     return (

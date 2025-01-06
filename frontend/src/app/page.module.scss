@@ -3,4 +3,11 @@
 .main {
     color: $dark-dark;
     font-family: "Fjalla One", sans-serif;
+    width: 100%;
+
+    .main__title-section {
+        width: 100%;
+        height: 768px;
+        background-color: $light-color;
+    }
 }

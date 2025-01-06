@@ -30,8 +30,6 @@ export default function Home() {
                                 className={styles["main__logo"]}
                                 src={kolokolLogo}
                                 alt="logo of the company"
-                                layout="fill"
-                                objectFit="cover"
                             />
                             <h1 className={styles["main__heading"]}>THE SOUND OF EVENTS</h1>
                         </div>
@@ -47,8 +45,6 @@ export default function Home() {
                             className={styles["main__image"]}
                             src={nico}
                             alt="A man sings on the stage"
-                            layout="fill"
-                            objectFit="cover"
                         />
                     </div>
                 </section>
@@ -60,8 +56,6 @@ export default function Home() {
                             className={styles["main__info-image"]}
                             src={crowd}
                             alt="The crowd of people on the festival of colour"
-                            layout="fill"
-                            objectFit="cover"
                         />
                     </div>
                     {/* правий бік */}

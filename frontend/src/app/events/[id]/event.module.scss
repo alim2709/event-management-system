@@ -1,0 +1,105 @@
+@import "@/app/globals.scss";
+
+.event-details {
+    background-color: $light-color;
+    text-transform: uppercase;
+    padding-top: 20px;
+    font-family: "Archivo Black", sans-serif;
+
+    .event-details__container {
+        margin-left: 10%;
+        margin-right: 10%;
+        max-width: 80%;
+        font-size: 30px;
+
+        .event-details__title {
+            font-size: 48px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .event-details__date {
+            span {
+                font-weight: bold;
+            }
+        }
+        .event-details__location {
+            span {
+                font-weight: bold;
+            }
+        }
+
+        .event-details__links {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            a {
+                color: $orange-color;
+                font-weight: bold;
+                transition: 0.4s;
+
+                &:hover {
+                    color: black;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .event-details__container {
+            margin-left: 5%;
+            margin-right: 5%;
+            font-size: 24px;
+
+            .event-details__title {
+                font-size: 36px;
+            }
+
+            .event-details__links {
+                justify-content: space-between;
+                gap: 10px;
+
+                a {
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        .event-details__container {
+            font-size: 20px;
+
+            .event-details__title {
+                font-size: 28px;
+            }
+
+            .event-details__links {
+                justify-content: space-between;
+                a {
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 480px) {
+        .event-details__container {
+            font-size: 16px;
+            margin-left: 5%;
+            margin-right: 5%;
+
+            .event-details__title {
+                font-size: 24px;
+            }
+
+            .event-details__links {
+                justify-content: space-between;
+                a {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}

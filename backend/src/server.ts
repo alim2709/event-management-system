@@ -1,11 +1,12 @@
 import { ApolloServer } from '@apollo/server';
-import { expressMiddleware } from '@apollo/server/express4';
+import { expressMiddleware, ExpressContextFunctionArgument } from '@apollo/server/express4';
 import express from 'express';
 import bodyParser from 'body-parser';
 import { Neo4jGraphQL } from '@neo4j/graphql';
 import typeDefs from './schemas';
-import resolvers from './resolvers';
+import {resolvers} from './resolvers';
 import { Neo4jDriver } from './config/neo4j.config';
+
 
 async function startServer() {
   try {
@@ -16,9 +17,19 @@ async function startServer() {
     const server = new ApolloServer({ schema });
     await server.start();
 
-    app.use('/graphql', bodyParser.json(), expressMiddleware(server));
+    app.use('/graphql', bodyParser.json(), expressMiddleware(
+      server,
+      {
+        context: async ({req}: ExpressContextFunctionArgument) => {
+          return { 
+            driver: Neo4jDriver,
+            req
+          };
+        },
+      }
+    ));
 
-    const PORT = process.env.PORT || 4000;
+    const PORT = process.env.API_PORT || 4000;
     app.listen(PORT, () => {
       console.log(`Server is running on http://localhost:${PORT}/graphql`);
     });

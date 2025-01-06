@@ -6,7 +6,10 @@ services:
       dockerfile: Dockerfile
     container_name: graphql_api
     ports:
-      - "${API_PORT}:${API_PORT}" # API Port from .env
+      - "${API_PORT}:${API_PORT}"
+    volumes:
+      - .:/app # Mount local code directory to /app in the container
+      - /app/node_modules  # API Port from .env
     environment:
       - NEO4J_URI=${NEO4J_URI}
       - NEO4J_USERNAME=${NEO4J_USERNAME}

@@ -6,16 +6,26 @@ import { Neo4jGraphQL } from '@neo4j/graphql';
 import typeDefs from './schemas';
 import {resolvers} from './resolvers';
 import { Neo4jDriver } from './config/neo4j.config';
+import cors from "cors";
 
 
 async function startServer() {
   try {
     const app = express();
+
+    app.use(cors({
+      origin: ['http://localhost:3000'], // Allow these origins
+      methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow these HTTP methods
+      allowedHeaders: ['Content-Type', 'Authorization'], // Allow these headers
+      credentials: true, // Include cookies in requests
+    }));
+
     const neoSchema = new Neo4jGraphQL({ typeDefs, resolvers, driver: Neo4jDriver });
     const schema = await neoSchema.getSchema();
 
     const server = new ApolloServer({ schema });
     await server.start();
+
 
     app.use('/graphql', bodyParser.json(), expressMiddleware(
       server,

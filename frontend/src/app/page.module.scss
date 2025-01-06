@@ -12,17 +12,108 @@
         display: flex;
         flex-direction: row;
         align-items: center;
+        gap: 40px;
+
         .main__title-left {
             width: 810px;
             height: 614px;
             background-color: $orange-color;
             margin-left: 75px;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+            display: flex;
+            flex-direction: row;
+
             .main__title-logo {
                 display: flex;
                 flex-direction: column;
+                width: 70%;
+
                 .main__logo {
-                    width: 260px;
-                    height: 100%;
+                    margin-top: 32px;
+                    margin-left: 24px;
+                    margin-bottom: 0;
+                    width: 270px;
+                    height: 72px;
+                }
+                
+                .main__heading {
+                    margin-left: 62px;
+                    margin-top: 32px;
+                    margin-bottom: 0;
+                    color: $light-color;
+                    font-family: "Fjalla One", sans-serif;
+                    font-weight: bold;
+                    font-size: 136px;
+                    letter-spacing: -0.5px;
+                    line-height: 1;
+                }
+            }
+
+            .main__auth-links {
+                display: flex;
+                flex-direction: column;
+                justify-content: end;
+                align-items: center;
+                gap: 25px;
+                margin-bottom: 80px;
+                margin-left: 40px;
+
+                .main__link {
+                    color: $orange-color;
+                    background-color: $light-color;
+                    width: 150px;
+                    height: 44px;
+                    border-radius: 8px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 25px;
+                    font-family: "Bebas Neue", sans-serif;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+    .main__info-section {
+        width: 100%;
+        height: 768px;
+        background-color: $orange-color;
+        display: flex;
+        flex-direction: row;
+        gap: 70px;
+        .main__info-left {
+            margin-top: 76px;
+            .main__info-image {
+                margin-left: 150px;
+            }
+        }
+
+        .main__info-right {
+            margin-top: 76px;
+            color: $light-color;
+            .main__info-header {
+                .main__icon {
+                    width: 48px;
+                    height: 48px;
+                    margin-bottom: 40px;
+                }
+
+                .main__subheading {
+                    font-family: "Fjalla One", sans-serif;
+                    font-weight: 400;
+                    font-size: 50px;
+                    margin-top: 0;
+                    margin-right: 100px;
+                    margin-bottom: 110px;
+                }
+            }
+
+            .main__info-list {
+                .main__list {
+                    font-size: 36px;
+                    margin-left: 20px;
                 }
             }
         }

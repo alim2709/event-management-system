@@ -5,8 +5,9 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: $orange-color;
-    font-family: --font-archivo-black;
+    background-color: $light-color;
+    font-family: "Fjalla One", sans-serif;
+    font-weight: 400;
 
     &__container {
         margin-left: 5%;
@@ -21,6 +22,7 @@
         background-color: rgb(253, 253, 253);
         padding: 40px 60px;
         border-radius: 12px;
+        border: 4px solid $orange-color;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         width: 450px;
 
@@ -58,6 +60,7 @@
         color: rgb(253, 253, 253);
         font-size: 16px;
         text-transform: uppercase;
+        font-family: "Archivo Narrow", sans-serif;
 
         &::placeholder {
             color: rgba(255, 255, 255, 0.7);
@@ -85,7 +88,8 @@
         transition: background-color 0.3s;
         width: 50%;
         margin: 30px auto 0;
-        text-decoration: underline;
+        text-decoration: none;
+        font-family: "Fjalla One", sans-serif;
 
         &:hover {
             background-color: #c0392b;

@@ -32,12 +32,20 @@
             border-radius: 10px;
         }
 
+        :hover {
+            color: $orange-color;
+        }
+
         .header__link-login {
             color: $light-color;
             text-decoration: none;
             background-color: $dark-dark;
             padding: 8px 15px;
             border-radius: 10px;
+        }
+
+        :hover {
+            color: $orange-color;
         }
     }
 }

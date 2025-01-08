@@ -8,7 +8,7 @@ const events = [
         date: "JUNE 2025",
         location: "Nürburgring, Germany",
         description: "One of the biggest rock festivals in the world.",
-        image: "/images/attendees-at-concert-event.jpg",
+        image: "/images/rock-am-ring.jpg",
     },
     {
         id: "2",

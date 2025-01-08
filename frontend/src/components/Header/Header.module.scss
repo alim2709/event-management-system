@@ -1,0 +1,43 @@
+@import "@/app/globals.scss";
+
+.header {
+    background-color: $orange-color;
+    height: 124px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-family: "Oswald", sans-serif;
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: 400;
+    .header__logo {
+        width: 270px;
+        height: 74px;
+        margin-left: 104px;
+    }
+
+    .header__links {
+        margin-right: 104px;
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+        .header__link-signup {
+            color: $dark-dark;
+            text-decoration: none;
+            background-color: $light-color;
+            padding: 8px 10px;
+            border-radius: 10px;
+        }
+
+        .header__link-login {
+            color: $light-color;
+            text-decoration: none;
+            background-color: $dark-dark;
+            padding: 8px 15px;
+            border-radius: 10px;
+        }
+    }
+}

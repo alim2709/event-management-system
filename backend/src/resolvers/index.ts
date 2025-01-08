@@ -1,9 +1,14 @@
 import { getPasswordHash, verifyPassword, createAccessToken, verifyToken } from "../../utils/authentication";
+import { eventResolvers } from './events';
 
 export const resolvers = {
-    Query: {},
+    Query: {
+      ...eventResolvers.Query,
+    },
     
     Mutation: {
+      ...eventResolvers.Mutation,
+
       signUp: async (_, { input}, context) => {
           const {email, password} = input;
           const session = context.driver.session();

@@ -12,27 +12,43 @@ const events = [
     },
     {
         id: "2",
-        title: "SUMMER FESTIVAL",
-        date: "JULY 2025",
-        location: "Berlin, Germany",
-        description: "A vibrant summer music festival in Berlin.",
-        image: "/images/summer-festival.jpg",
+        title: "TOMORROWLAND",
+        date: "OCTOBER 2025",
+        location: "Itu, Brazil",
+        description: "Tomorrowland is a large-scale annual electronic dance music festival.",
+        image: "/images/tomorrowland-event.jpg",
     },
     {
         id: "3",
-        title: "SUMMER FESTIVAL",
-        date: "JULY 2025",
-        location: "Berlin, Germany",
-        description: "A vibrant summer music festival in Berlin.",
-        image: "/images/summer-festival.jpg",
+        title: "ROCK IM PARK",
+        date: "JUNE 2025",
+        location: "Nürnberg, Germany",
+        description: "A vibrant summer music festival in Nürnberg.",
+        image: "/images/rock-im-park.jpg",
     },
     {
         id: "4",
-        title: "SUMMER FESTIVAL",
-        date: "JULY 2025",
-        location: "Berlin, Germany",
-        description: "A vibrant summer music festival in Berlin.",
-        image: "/images/summer-festival.jpg",
+        title: "HELLFEST",
+        date: "JUNE 2025",
+        location: "Clisson, France",
+        description: "A rock festival focusing on heavy metal music.",
+        image: "/images/hellfest.jpg",
+    },
+    {
+        id: "5",
+        title: "HANDS-ON LARGE LANGUAGE...",
+        date: "JANUARY 2025",
+        location: "Ghent, Belgium",
+        description: "An online session for all interested.",
+        image: "/images/hands-on.avif",
+    },
+    {
+        id: "6",
+        title: "PAPA ROACH",
+        date: "FEBRUARY 2025",
+        location: "Brussels, Belgium",
+        description: "A concert of a world-famous American rock band.",
+        image: "/images/papa-roach.webp",
     },
 ];
 
@@ -45,7 +61,15 @@ export default function EventsPage() {
                 </h1>
                 <div className={styles["events-page__cards"]}>
                     {events.map((event) => (
-                        <EventCard key={event.id} eventId={event.id} />
+                        <EventCard 
+                            key={event.id} 
+                            eventId={event.id} 
+                            title={event.title}
+                            date={event.date}
+                            location={event.location}
+                            description={event.description}
+                            image={event.image}
+                        />
                     ))}
                 </div>
             </div>

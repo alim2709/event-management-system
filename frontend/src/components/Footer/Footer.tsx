@@ -19,10 +19,10 @@ export default function Footer() {
             </div>
             <div className={styles["footer__contact"]}>
                 <div>
-                    <a href="#" className={styles["footer__contact-link"]}>Profile</a>
+                    <a href="/profile" className={styles["footer__contact-link"]}>Profile</a>
                 </div>
                 <div>
-                    <a href="#" className={styles["footer__contact-link"]}>Events</a>
+                    <a href="/events" className={styles["footer__contact-link"]}>Events</a>
                 </div>
                 <div className={styles["footer__contact-option"]}>
                     <a href="tel:+32479123456" className={styles["footer__contact-link"]}>+32 479 12 34 56</a>

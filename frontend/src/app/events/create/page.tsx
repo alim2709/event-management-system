@@ -11,7 +11,7 @@ export default function CreateEventPage() {
                             className={styles["create-event__label"]}
                             htmlFor="event-name"
                         >
-                            Name Of The Event
+                            Name Of The Event2
                         </label>
                         <input
                             className={styles["create-event__input"]}

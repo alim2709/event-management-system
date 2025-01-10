@@ -9,7 +9,7 @@ services:
       - "${API_PORT}:${API_PORT}"
     volumes:
       - .:/app # Mount local code directory to /app in the container
-      - /app/node_modules  # API Port from .env
+      - /app/node_modules # API Port from .env
     environment:
       - NEO4J_URI=${NEO4J_URI}
       - NEO4J_USERNAME=${NEO4J_USERNAME}
@@ -23,7 +23,7 @@ services:
     container_name: neo4j_db
     ports:
       - "${NEO4J_BROWSER_PORT}:${NEO4J_BROWSER_PORT}" # Neo4j Browser Port
-      - "${NEO4J_BOLT_PORT}:${NEO4J_BOLT_PORT}"       # Neo4j Bolt Port
+      - "${NEO4J_BOLT_PORT}:${NEO4J_BOLT_PORT}" # Neo4j Bolt Port
     environment:
       - NEO4J_AUTH=${NEO4J_USERNAME}/${NEO4J_PASSWORD}
     volumes:
@@ -33,4 +33,21 @@ services:
 volumes:
   neo4j_data:
   neo4j_logs:
-  
+#     # Frontend service
+#   frontend:
+#     build:
+#       context: ./frontend  # Path to your frontend code directory
+#       dockerfile: Dockerfile # Path to frontend Dockerfile
+#     container_name: frontend_app
+#     ports:
+#       - "${FRONTEND_PORT}:${FRONTEND_PORT}"  # Map frontend port
+#     environment:
+#       - REACT_APP_API_URL=http://localhost:${API_PORT}  # URL of backend API
+#     volumes:
+#       - ./frontend:/app  # Mount frontend directory for live updates
+#     depends_on:
+#       - api  # Ensure backend is up before starting frontend
+
+# volumes:
+#   neo4j_data:
+#   neo4j_logs:

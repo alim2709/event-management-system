@@ -111,7 +111,7 @@ const events = {
         image: "/images/rock-am-ring.jpg",
         link: "https://www.rock-am-ring.com/en",
     },
-    2: {
+    3: {
         title: "ROCK IM PARK",
         // date: "JUNE 2025",
         // location: "Nürnberg, Germany",

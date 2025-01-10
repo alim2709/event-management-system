@@ -4,29 +4,26 @@ import styles from "./Header.module.scss";
 import Image from "next/image";
 import kolokol from "../../../public/images/kolokol-orange.png";
 
-export default function Header() {
-  const [showHeader, setShowHeader] = useState(false);
-
-  const handleScroll = () => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const sectionHeight = 768;
-
-    if (scrollTop >= sectionHeight / 2 && scrollTop < sectionHeight) {
-      setShowHeader(true);
-    } else if (scrollTop < sectionHeight / 2) {
-      setShowHeader(false);
-    }
-  };
+export default function Header({ isHidden }: { isHidden: boolean }) {
+  const [isVisible, setIsVisible] = useState(!isHidden);
 
   useEffect(() => {
+    if (!isHidden) return;
+
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const halfPageHeight = window.innerHeight / 2;
+      setIsVisible(scrollPosition > halfPageHeight);
+    };
+
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [isHidden]);
 
   return (
-    <header className={`${styles.header} ${showHeader ? styles.visible : ''}`}>
+    <header className={`${styles.header} ${isVisible ? styles.visible : styles.hidden}`}>
       <div>
         <a href="/">
           <Image 

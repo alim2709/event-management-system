@@ -1,0 +1,29 @@
+@import "@/app/globals.scss";
+
+.events-page {
+    background-color: $light-color;
+    padding-top: 1px;
+    padding-bottom: 70px;
+    font-family: "Fjalla One", sans-serif;
+
+    .events-page__container {
+        margin-left: 5%;
+        margin-right: 5%;
+        max-width: 90%;
+
+        .events-page__title {
+            color: $dark-dark;
+            font-size: 70px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .events-page__cards {
+            display: flex;
+            flex-wrap: wrap;
+            row-gap: 60px;
+            column-gap: 140px;
+            justify-content: center;
+        }
+    }
+}

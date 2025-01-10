@@ -1,0 +1,352 @@
+@import "@/app/globals.scss";
+
+.main {
+    color: $dark-dark;
+    font-family: "Fjalla One", sans-serif;
+    width: 100%;
+
+    .main__title-section {
+        width: 100%;
+        height: 768px;
+        background-color: $light-color;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 40px;
+
+        .main__title-left {
+            width: 810px;
+            height: 614px;
+            background-color: $orange-color;
+            margin-left: 75px;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+            display: flex;
+            flex-direction: row;
+
+            .main__title-logo {
+                display: flex;
+                flex-direction: column;
+                width: 70%;
+
+                .main__logo {
+                    margin-top: 32px;
+                    margin-left: 24px;
+                    margin-bottom: 0;
+                    width: 270px;
+                    height: 72px;
+                }
+                
+                .main__heading {
+                    margin-left: 62px;
+                    margin-top: 32px;
+                    margin-bottom: 0;
+                    color: $light-color;
+                    font-family: "Fjalla One", sans-serif;
+                    font-weight: bold;
+                    font-size: 136px;
+                    letter-spacing: -0.5px;
+                    line-height: 1;
+                    text-transform: uppercase;
+                }
+            }
+
+            .main__auth-links {
+                display: flex;
+                flex-direction: column;
+                justify-content: end;
+                align-items: center;
+                gap: 25px;
+                margin-bottom: 80px;
+                margin-left: 40px;
+
+                .main__link {
+                    color: $orange-color;
+                    background-color: $light-color;
+                    width: 150px;
+                    height: 44px;
+                    border-radius: 8px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 25px;
+                    font-family: "Bebas Neue", sans-serif;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                }
+
+                .main__link:hover {
+                    color: $dark-dark;
+                }
+            }
+        }
+    }
+
+    .main__info-section {
+        width: 100%;
+        height: 768px;
+        background-color: $orange-color;
+        display: flex;
+        flex-direction: row;
+        gap: 70px;
+        .main__info-left {
+            margin-top: 76px;
+            .main__info-image {
+                margin-left: 150px;
+            }
+        }
+
+        .main__info-right {
+            margin-top: 76px;
+            color: $light-color;
+            .main__info-header {
+                .main__icon {
+                    width: 48px;
+                    height: 48px;
+                    margin-bottom: 40px;
+                }
+
+                .main__subheading {
+                    font-family: "Fjalla One", sans-serif;
+                    font-weight: 400;
+                    font-size: 50px;
+                    margin-top: 0;
+                    margin-right: 100px;
+                    margin-bottom: 110px;
+                    text-transform: uppercase;
+                }
+            }
+
+            .main__info-list {
+                .main__list {
+                    font-size: 36px;
+                    margin-left: 20px;
+                }
+            }
+        }
+    }
+
+    .main__cards-section {
+        background-color: $light-color;
+        width: 100%;
+        height: 768px;
+        .main__cards-header {
+            margin-bottom: 40px;
+            .main__subheading {
+                margin-top: 0;
+                margin-bottom: 0;
+                padding-top: 76px;
+                text-align: center;
+                font-size: 50px;
+                text-transform: uppercase;
+            }
+            .main__paragraph {
+                text-align: center;
+                font-size: 40px;
+                font-weight: 500;
+                margin-top: 0;
+                text-transform: uppercase;
+            }
+        }
+        .main__cards {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            justify-content: center;
+
+            .main__card {
+                display: flex;
+                flex-direction: column;
+                width: 380px;
+
+                .main__card-image {
+                    width: 380px;
+                    height: 190px;
+                    border-radius: 20px;
+                }
+
+                .main__card-title {
+                    background-color: $orange-color;
+                    color: $light-color;
+                    margin-top: -4px;
+                    height: 300px;
+                    font-size: 24px;
+                    border-radius: 20px;
+                    margin-bottom: 0;
+
+                    .main__card-heading {
+                        margin-left: 25px;
+                        margin-right: 90px;
+                        text-transform: uppercase;
+                    }
+
+                    .main__card-text {
+                        background-color: $dark-dark;
+                        width: 380px;
+                        font-family: "Oswald", sans-serif;
+                        font-size: 20px;
+                        height: 173px;
+                        border-radius: 20px;
+
+                        p {
+                            padding: 14px 25px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .main__event-types {
+        background-color: $orange-color;
+        color: $light-color;
+        width: 100%;
+        height: 768px;
+
+        .main__subheading {
+            margin-top: 0;
+            margin-bottom: 40px;
+            padding-top: 76px;
+            text-align: center;
+            font-size: 50px;
+            text-transform: uppercase;
+        }
+
+        .main__event-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px 120px;
+            justify-content: center;
+            align-items: flex-start;
+            max-width: 1100px;
+            margin: 0 auto;
+
+            .main__event-card {
+                display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+                background-color: $dark-dark;
+                height: 160px;
+                width: 480px;
+                border-radius: 16px;
+                .main__event-image {
+                    width: 136px;
+                    height: 136px;
+                    margin-top: 12px;
+                    margin-left: 12px;
+                    margin-right: 30px;
+                    border-radius: 8px;
+                }
+                .main__event-title {
+                    justify-content: flex-start;
+                    text-transform: uppercase;
+                    font-size: 25px;
+                    font-weight: 400;
+                    font-family: "Oswald", sans-serif;
+
+                    p {
+                        margin-top: 0;
+                        padding-top: 12px;
+                    }
+                }
+            }
+        }
+    }
+
+    .main__benefits {
+        background-color: $orange-color;
+        color: $light-color;
+        width: 100%;
+        height: 768px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        .main__benefits-image {
+            margin-left: 100px;
+        }
+        .main__benefits-text {
+            background-color: $dark-dark;
+            height: 610px;
+            width: 780px;
+            margin-right: 50px;
+            padding-left: 50px;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            .main__subheading {
+                padding-top: 25px;
+                text-transform: uppercase;
+                font-size: 35px;
+                padding-bottom: 20px;
+            }
+            .main__benefit {
+                font-family: "Oswald", sans-serif;
+                .main__benefit-title {
+                    font-weight: 500;
+                    text-transform: uppercase;
+                    font-size: 20px;
+                    margin-bottom: 0;
+                }
+
+                .main__benefit-description {
+                    margin-top: 5px;
+                    font-weight: 300;
+                    font-size: 18px;
+                    margin-bottom: 40px;
+                }
+            }
+        }
+    }
+
+    .main__closing-image {
+        width: 100%;
+        height: 560px;
+
+        .main__image {
+            width: 100%;
+            height: 560px;
+        }
+    }
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+
+    &__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+
+    &__content {
+        position: relative;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        max-width: 500px;
+        width: 90%;
+    }
+
+    &__close-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+    }
+}

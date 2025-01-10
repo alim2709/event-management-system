@@ -5,10 +5,19 @@
 // font-family: "Inter", sans-serif;
 // font-family: "Archivo Black", sans-serif;
 
+// :root {
+//     --header-height: 124px; /* Висота Header, змініть відповідно до дизайну */
+//   }
+
 .body {
     padding: 0;
     margin: 0;
     --font-archivo-black: "Archivo Black", sans-serif;
     --font-inter: "Inter", sans-serif;
     background-color: $light-color;
+    --header-height: 124px;
 }
+
+.main {
+    min-height: calc(100vh - var(--header-height)); /* Гарантує, що контент завжди поміститься */
+  }
